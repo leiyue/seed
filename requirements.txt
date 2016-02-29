@@ -1,0 +1,20 @@
+# Script
+Flask-Script
+
+# SeedApp
+Flask
+
+# Database
+Flask-SQLAlchemy
+Flask-Migrate
+
+# Admin
+Flask-Admin
+
+# Babel
+Flask-BabelEx
+
+
+
+# Add-ons
+PyYAML

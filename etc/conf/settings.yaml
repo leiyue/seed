@@ -1,0 +1,29 @@
+COMMON: &common
+  DEBUG: False
+  TESTING: False
+  # Base
+  SECRET_KEY: YouShouldNeverGuessWithIt
+  # Database
+  SQLALCHEMY_TRACK_MODIFICATIONS: True
+  # Logger
+  LOGGER_ENABLED: True
+  LOGGER_LEVEL: DEBUG
+  LOGGER_FORMAT: '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+  LOGGER_DATE_FORMAT: '%m-%d %H:%M:%S'
+  # Babel
+  BABEL_DEFAULT_LOCALE: zh_Hans_CN
+
+
+
+DEVELOPMENT: &development
+  <<: *common
+  DEBUG: True
+
+PRODUCTION: &production
+  <<: *common
+  DEBUG: False
+  TESTING: False
+
+TESTING: &testing
+  <<: *common
+  TESTING: True

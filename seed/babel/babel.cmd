@@ -1,0 +1,1 @@
+pybabel extract -F babel.ini -k _ -k _n -k _l -o seed.pot --project seed ..
