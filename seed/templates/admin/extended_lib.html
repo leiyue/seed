@@ -1,0 +1,44 @@
+{# ----------- Render Table ----------- #}
+{% macro render_table(headers, values) %}
+    <table class="table table-striped table-hover table-condensed">
+        <thead>
+        <tr>
+            {% for item in headers %}
+                <th>{{ item }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in values %}
+            <tr>
+                {% for subitem in item %}
+                    <td>{{ format_value(subitem) }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endmacro %}
+
+{# ----------- Value Formatter ----------- #}
+{% macro format_value(value) %}
+    {% if value|isinstance('dict') %}
+        {{ render_table(heads=(_('Key'), _('Value')), values=value.items()) }}
+
+    {% elif value|isinstance('list') or value|isinstance('tuple') %}
+        <ul>
+            {% for item in value %}
+                <li>{{ format_value(item) }}</li>
+            {% endfor %}
+        </ul>
+
+    {% elif value|isinstance('Blueprint') %}
+        {{ render_table(headers=(_('Attribute'), _('Value')), values=((_('name'), value.name), (_('module'), value.import_name), (_('static'), value.static_folder), (_('templates'), value.template_folder))) }}
+
+    {% elif value|isinstance('Rule') %}
+        {{ render_table(headers=(_('Attribute'), _('Value')), values=((_('arguments'), value.arguments),(_('defaults'), value.defaults),(_('methods'), value.methods), (_('endpoint'), value.endpoint))) }}
+
+    {% else %}
+        {{ value }}
+    {% endif %}
+{% endmacro %}

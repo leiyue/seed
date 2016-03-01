@@ -1,0 +1,31 @@
+{% extends 'admin/master.html' %}
+{% from 'admin/extended_lib.html' import format_value, render_table with context %}
+
+{% block body %}
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#blueprints" aria-controls="blueprints" role="tab"
+                                                  data-toggle="tab">{{ _('Blueprints') }}</a></li>
+        <li role="presentation"><a href="#extensions" aria-controls="extensions" role="tab"
+                                   data-toggle="tab">{{ _('Extensions') }}</a></li>
+        <li role="presentation"><a href="#urls" aria-controls="urls" role="tab" data-toggle="tab">{{ _('Urls') }}</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="blueprints">
+            {{ render_table(headers=(_('name'), _('attributes')), values=app.blueprints.items()) }}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="extensions">
+            {{ render_table(headers=(_('name'), _('extension')), values=app.extensions.items()) }}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="urls">
+            <ul class="list-group">
+                {% for i in app.url_map.iter_rules()|reverse %}
+                    <li class="list-group-item">{{ i.rule }}
+                        -> {{ app.view_functions[i.endpoint].__module__ }}.{{ app.view_functions[i.endpoint].view_class }}.{{ app.view_functions[i.endpoint].func_name }}
+                        {{ format_value(i) }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
