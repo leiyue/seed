@@ -8,6 +8,7 @@ import sys
 
 from flask import Blueprint
 from werkzeug.routing import Rule
+from wtforms import HiddenField
 
 if sys.version_info.major == 3:
     unicode = lambda x: '{}'.format(x)
@@ -27,5 +28,10 @@ def is_instance(v, cls):
     return isinstance(v, cls_map.get(cls, str))
 
 
+def is_hidden_field_filter(field):
+    return isinstance(field, HiddenField)
+
+
 def configure(app):
     app.jinja_env.filters['isinstance'] = is_instance
+    app.jinja_env.globals['is_hidden_field'] = is_hidden_field_filter

@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "email": "admin",
+      "password": "aaa",
+      "confirmed": true,
+      "roles": [
+        "admin"
+      ]
+    },
+    {
+      "email": "guest",
+      "password": "guest",
+      "confirmed": true,
+      "roles": [
+        "user"
+      ]
+    }
+  ]
+}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: seed VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-03-01 12:03+0800\n"
+"POT-Creation-Date: 2016-03-02 00:19+0800\n"
 "PO-Revision-Date: 2016-03-01 02:00+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hans_CN\n"
@@ -18,21 +18,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.2.0\n"
 
-#: ../core/admin/__init__.py:21
-msgid "System"
-msgstr "系统"
+#: ../settings.py:30
+msgid "Static files"
+msgstr "静态文件"
+
+#: ../settings.py:31 ../settings.py:40
+msgid "Files"
+msgstr "文件"
+
+#: ../settings.py:39
+msgid "Media files"
+msgstr "媒体文件"
 
 #: ../core/admin/__init__.py:21
-msgid "Alembic"
-msgstr "数据库版本"
-
-#: ../core/admin/__init__.py:22
 msgid "Settings"
 msgstr "设置"
 
-#: ../core/admin/__init__.py:22
+#: ../core/admin/__init__.py:21
 msgid "Inspector"
 msgstr "检查员"
+
+#: ../core/admin/__init__.py:22
+msgid "System"
+msgstr "系统"
+
+#: ../core/admin/__init__.py:22
+msgid "Alembic"
+msgstr "数据库版本"
+
+#: ../core/admin/views.py:35
+msgid "version_num"
+msgstr "数据库版本"
 
 #: ../templates/admin/extended_lib.html:26
 msgid "Key"

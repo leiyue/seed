@@ -14,6 +14,8 @@ Flask-Admin
 # Babel
 Flask-BabelEx
 
+# Security
+Flask-Security
 
 
 # Add-ons
