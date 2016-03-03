@@ -15,8 +15,6 @@ logger = logging.getLogger()
 class CRUD(object):
     __table_args__ = {'extend_existing': True}
 
-    id = db.Column(db.Integer, primary_key=True)
-
     @classmethod
     def find(cls, **kwargs):
         return cls.query.filter_by(**kwargs).all()

@@ -72,7 +72,7 @@ class UserAdmin(ModelView):
         roles=[dict(Admin='管理员'), dict(User='普通用户')],
     )
 
-    create_template = 'admin/create_user.html'
+    create_template = 'admin/model/create_user.html'
 
     def create_model(self, form):
         self.model.register(
@@ -92,5 +92,5 @@ class UserAdmin(ModelView):
         return flask.redirect(flask.url_for('user.index_view'))
 
 
-admin.register(Role, RoleAdmin, category=_l("Accounts"), name=_l("Roles"))
-admin.register(User, UserAdmin, category=_l("Accounts"), name=_l("User"))
+admin.register(Role, RoleAdmin, category=_l('Accounts'), name=_l('Roles'))
+admin.register(User, UserAdmin, category=_l('Accounts'), name=_l('User'))
