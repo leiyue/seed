@@ -12,7 +12,7 @@ from flask.ext.security.utils import encrypt_password
 from werkzeug.local import LocalProxy
 
 from seed.core.db import db
-from seed.core.models.mixins import CRUD, Timestamp
+from seed.core.models.mixins import CRUD, Dated
 
 _security = LocalProxy(lambda: flask.current_app.extensions.get('security'))
 
@@ -21,8 +21,7 @@ roles_users = db.Table('roles_users',
                        db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
 
 
-class Role(db.Model, RoleMixin, CRUD, Timestamp):
-    id = db.Column(db.Integer, primary_key=True)
+class Role(db.Model, CRUD, Dated, RoleMixin):
     name = db.Column(db.String(80), unique=True)
     description = db.Column(db.String(255))
 
@@ -37,8 +36,7 @@ class Role(db.Model, RoleMixin, CRUD, Timestamp):
         return self.name
 
 
-class User(db.Model, UserMixin, CRUD):
-    id = db.Column(db.Integer, primary_key=True)
+class User(db.Model, CRUD, UserMixin):
     email = db.Column(db.String(255), unique=True)
     password = db.Column('password', db.String(255), nullable=False)
     active = db.Column(db.Boolean())
@@ -52,6 +50,7 @@ class User(db.Model, UserMixin, CRUD):
                             enable_typechecks=False,
                             secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
+
     # posts = db.relationship('Post', backref='author', lazy='dynamic')
 
     def __repr__(self):

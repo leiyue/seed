@@ -17,6 +17,9 @@ Flask-BabelEx
 # Security
 Flask-Security
 
+# Markdown
+Flask-Mistune
+
 
 # Add-ons
 PyYAML

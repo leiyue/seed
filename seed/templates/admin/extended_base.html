@@ -1,0 +1,78 @@
+{% from 'lib.html' import icon %}
+{% extends 'admin/base.html' %}
+
+{% block head_css -%}
+    {{ super() }}
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-markdown/2.10.0/css/bootstrap-markdown.min.css"
+          rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+{%- endblock head_css %}
+
+{% block access_control %}
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false">{{ icon('user') }} {{ current_user.email }} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                {% if not current_user.is_authenticated -%}
+                    <li><a href="{{ url_for_security('login') }}">{{ icon('log-in') }} 登录</a></li>
+                {% else %}
+                    {% if security.changeable -%}
+                        <li><a href="{{ url_for_security('change_password') }}">{{ icon('lock') }} 更改密码</a></li>
+                        <li role="separator" class="divider"></li>
+                    {%- endif %}
+                    <li><a href="{{ url_for_security('logout') }}">{{ icon('log-out') }} 注销</a></li>
+                {%- endif %}
+            </ul>
+        </li>
+    </ul>
+{% endblock %}
+{% block tail_js -%}
+    {{ super() }}
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/lang/summernote-zh-CN.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-markdown/2.10.0/js/bootstrap-markdown.min.js"></script>
+    <script src="http://delivr.cdnjs.net/jquery.hotkeys/0.1.0/jquery.hotkeys.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/markdown.js/0.5.0/markdown.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/to-markdown/1.3.0/to-markdown.min.js"></script>
+    <script>
+        $(function () {
+            var textEditor = $('.text_editor');
+            var selectedFormat = $('#content_format');
+            if (textEditor != undefined) {
+                if (selectedFormat.val() == 'markdown') {
+                    load_markdown_editor();
+                    textEditor.focus()
+                } else if (selectedFormat.val() == 'html') {
+                    load_html_editor();
+                }
+            }
+            selectedFormat.change(function () {
+                if (this.value == 'markdown') {
+                    destroy_html_editor();
+                    load_markdown_editor();
+                    textEditor.focus()
+                } else if (this.value == 'html') {
+                    destroy_markdown_editor();
+                    load_html_editor();
+                } else {
+                    destroy_markdown_editor();
+                    destroy_html_editor()
+                    textEditor.focus()
+                }
+            });
+        });
+
+    </script>
+{%- endblock %}
+
+{% block tail -%}
+    <div id="footer">
+        {% block footer %}
+            <p class="text-center">&copy; {{ config['AUTHOR_NAME'] or config['COMPANY_NAME'] or config['PROJECT_NAME'] }}
+                2016</p>
+        {% endblock %}
+    </div>
+{%- endblock tail %}

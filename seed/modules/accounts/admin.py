@@ -65,14 +65,16 @@ class UserAdmin(ModelView):
         email='用户登录标识',
         password='数据库将保存加密后的密码',
         active='是否启用帐户，默认为启用状态',
-        roles='管理用户为Admin，普通用户为User，默认为User。'
+        roles='管理用户为admin，普通用户为user，默认为user。'
     )
 
-    form_choices = dict(
-        roles=[dict(Admin='管理员'), dict(User='普通用户')],
-    )
+    # form_choices = dict(
+    #     roles=[dict(admin='管理员'), dict(user='普通用户')],
+    # )
+    # form_ajax_refs = {'roles': {'fields': (Role.name, Role.description)}}
 
-    create_template = 'admin/model/create_user.html'
+    # create_template = 'admin/model/create_user.html'
+
 
     def create_model(self, form):
         self.model.register(

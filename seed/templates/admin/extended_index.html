@@ -2,4 +2,18 @@
 
 {% block body %}
     <p class="text-center ">hello world</p>
+    <div id="summernote"></div>
+    <textarea id="bootstrap-markdown" rows="10"></textarea>
+{% endblock %}
+
+{% block tail_js %}
+    {{ super() }}
+    <script>
+        $('#summernote').summernote({
+            tabsize: 2,
+            height: 100,
+            lang: 'zh-CN'
+        });
+        $('#bootstrap-markdown').markdown();
+    </script>
 {% endblock %}

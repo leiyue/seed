@@ -27,7 +27,12 @@ class SeedAdmin(Admin):
 
 
 def create_admin(app=None, index_view=None):
-    return SeedAdmin(app=app, index_view=index_view or IndexView(), template_mode='bootstrap3')
+    return SeedAdmin(
+        app=app,
+        base_template='admin/extended_base.html',
+        index_view=index_view or IndexView(),
+        template_mode='bootstrap3'
+    )
 
 
 def configure_admin(app, admin):

@@ -15,6 +15,8 @@ logger = logging.getLogger()
 class CRUD(object):
     __table_args__ = {'extend_existing': True}
 
+    id = db.Column(db.Integer, primary_key=True)
+
     @classmethod
     def find(cls, **kwargs):
         return cls.query.filter_by(**kwargs).all()
@@ -71,6 +73,12 @@ class CRUD(object):
         return self.__repr__()
 
 
-class Timestamp(object):
+class Dated(object):
+    available_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, nullable=False)
+    available_until = db.Column(db.DateTime)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, nullable=False)
-    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
+
+
+class ContentFormat(object):
+    content_format = db.Column(db.String(20), default='html')
