@@ -8,14 +8,25 @@ from __future__ import (absolute_import, division, print_function,
 from flask.ext.mistune import markdown
 
 from seed.core.db import db
-from seed.core.models.mixins import CRUD, Dated, ContentFormat
+from seed.core.models.mixins import CRUD, Dated, Formatted
+
+posts_users = db.Table(
+    'posts_users',
+    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+    db.Column('post_id', db.Integer(), db.ForeignKey('post.id'))
+)
 
 
-class Post(db.Model, CRUD, Dated, ContentFormat):
+class Post(db.Model, CRUD, Dated, Formatted):
     title = db.Column(db.String(255), nullable=False)
     slug = db.Column(db.String(100), unique=True)
     summary = db.Column(db.String(255))
     body = db.Column(db.Text, nullable=False)
+    authors = db.relationship(
+        'User',
+        secondary=posts_users,
+        backref=db.backref('posts', lazy='dynamic')
+    )
 
     def get_summary(self):
         if self.summary:

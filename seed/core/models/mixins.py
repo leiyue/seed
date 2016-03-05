@@ -80,5 +80,5 @@ class Dated(object):
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
 
 
-class ContentFormat(object):
+class Formatted(object):
     content_format = db.Column(db.String(20), default='html')

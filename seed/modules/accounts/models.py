@@ -46,12 +46,12 @@ class User(db.Model, CRUD, UserMixin):
     last_login_at = db.Column(db.DateTime())
     last_login_ip = db.Column(db.String(255))
     login_count = db.Column(db.Integer(), default=0)
-    roles = db.relationship('Role',
-                            enable_typechecks=False,
-                            secondary=roles_users,
-                            backref=db.backref('users', lazy='dynamic'))
-
-    # posts = db.relationship('Post', backref='author', lazy='dynamic')
+    roles = db.relationship(
+        'Role',
+        enable_typechecks=False,
+        secondary=roles_users,
+        backref=db.backref('users', lazy='dynamic')
+    )
 
     def __repr__(self):
         return '<{class_name}({name})>'.format(class_name=self.__class__.__name__, name=self.email)
@@ -87,21 +87,3 @@ class User(db.Model, CRUD, UserMixin):
                 new_user.add_role(role_name)
         flask.current_app.logger.debug('Created user {0}'.format(email))
         return new_user
-
-    @classmethod
-    def add_system_users(cls):
-
-        # make roles
-        _security.datastore.find_or_create_role('admin')
-        _security.datastore.find_or_create_role('user')
-        db.session.commit()
-
-        cls.register(email='admin', password='123', confirmed=True, roles=['admin'])
-        cls.register(email='guest', password='guest', confirmed=True, roles=['user'])
-        db.session.commit()
-
-    @classmethod
-    def rm_system_users(cls):
-        _security.datastore.delete_user(email='admin')
-        _security.datastore.delete_user(email='guest')
-        db.session.commit()
