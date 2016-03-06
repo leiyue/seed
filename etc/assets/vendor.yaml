@@ -1,0 +1,20 @@
+css-vendor:
+        filters: cssutils
+        output: css/vendor.css
+        contents:
+                - libs/font-awesome/css/font-awesome.css
+                - libs/summernote/dist/summernote.css
+                - libs/bootstrap-markdown/css/bootstrap-markdown.min.css
+js-vendor:
+        filters: rjsmin
+        output: js/vendor.js
+        contents:
+                - libs/summernote/dist/summernote.js
+                - libs/summernote/dist/lang/summernote-zh-CN.js
+                - libs/bootstrap-markdown/js/bootstrap-markdown.js
+                - libs/bootstrap-markdown/locale/bootstrap-markdown.zh.js
+                - libs/jquery.hotkeys/jquery.hotkeys.js
+                - libs/markdown/lib/markdown.js
+                - libs/marked/lib/marked.js
+                - libs/to-markdown/dist/to-markdown.js
+

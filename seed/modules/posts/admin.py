@@ -10,7 +10,7 @@ from flask.ext.admin.contrib.sqla import ModelView
 from seed import admin
 from seed.core.admin import _l
 from seed.core.admin.widgets import TextEditor
-from seed.modules.posts.models import Post
+from seed.modules.posts.models import Category, Post
 
 
 class PostAdmin(ModelView):
@@ -18,8 +18,8 @@ class PostAdmin(ModelView):
         content_format=[('html', 'html'), ('markdown', 'markdown'), ('text', 'text')],
     )
     form_args = dict(
-        body={'widget': TextEditor()}
+        content={'widget': TextEditor()}
     )
 
-
+admin.register(Category, ModelView, category=_l('Content'), name=_l('Category'))
 admin.register(Post, PostAdmin, category=_l('Content'), name=_l('Post'))

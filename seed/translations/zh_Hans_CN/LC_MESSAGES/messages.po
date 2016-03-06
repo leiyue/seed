@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: seed VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-03-02 00:19+0800\n"
+"POT-Creation-Date: 2016-03-07 00:15+0800\n"
 "PO-Revision-Date: 2016-03-01 02:00+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hans_CN\n"
@@ -30,71 +30,131 @@ msgstr "文件"
 msgid "Media files"
 msgstr "媒体文件"
 
-#: ../core/admin/__init__.py:21
-msgid "Settings"
-msgstr "设置"
-
-#: ../core/admin/__init__.py:21
-msgid "Inspector"
-msgstr "检查员"
-
-#: ../core/admin/__init__.py:22
+#: ../core/admin/__init__.py:39
 msgid "System"
 msgstr "系统"
 
-#: ../core/admin/__init__.py:22
+#: ../core/admin/__init__.py:39
 msgid "Alembic"
 msgstr "数据库版本"
 
-#: ../core/admin/views.py:35
+#: ../core/admin/__init__.py:57
+msgid "Settings"
+msgstr "设置"
+
+#: ../core/admin/__init__.py:57
+msgid "Inspector"
+msgstr "检查员"
+
+#: ../core/admin/views.py:36
 msgid "version_num"
 msgstr "数据库版本"
 
-#: ../templates/admin/extended_lib.html:26
+#: ../modules/accounts/admin.py:97 ../modules/accounts/admin.py:98
+msgid "Accounts"
+msgstr "账号"
+
+#: ../modules/accounts/admin.py:97
+msgid "Roles"
+msgstr "角色"
+
+#: ../modules/accounts/admin.py:98
+msgid "User"
+msgstr "用户"
+
+#: ../modules/accounts/forms.py:25 ../modules/accounts/forms.py:29
+#: ../modules/accounts/forms.py:33
+msgid "Email"
+msgstr "邮件地址"
+
+#: ../modules/accounts/forms.py:37 ../modules/accounts/forms.py:47
+msgid "Password"
+msgstr "密码"
+
+#: ../modules/accounts/forms.py:41
+msgid "Password Confirm"
+msgstr "确认密码"
+
+#: ../modules/accounts/forms.py:46
+msgid "Login Name"
+msgstr "登录名"
+
+#: ../modules/accounts/forms.py:48
+msgid "Remember"
+msgstr "自动登录"
+
+#: ../modules/accounts/forms.py:49
+msgid "Login"
+msgstr "登录"
+
+#: ../modules/accounts/forms.py:85
+msgid "New Password"
+msgstr "新密码"
+
+#: ../modules/accounts/forms.py:87
+msgid "New Password Confirm"
+msgstr "确认新密码"
+
+#: ../modules/accounts/forms.py:89
+#: ../templates/security/extended_change_password.html:8
+msgid "Change Password"
+msgstr "更改密码"
+
+#: ../modules/posts/admin.py:24 ../modules/posts/admin.py:25
+msgid "Content"
+msgstr "内容"
+
+#: ../modules/posts/admin.py:24
+msgid "Category"
+msgstr "分类"
+
+#: ../modules/posts/admin.py:25
+msgid "Post"
+msgstr "博客"
+
+#: ../templates/lib.html:286
 msgid "Key"
 msgstr "字段"
 
-#: ../templates/admin/extended_lib.html:26
-#: ../templates/admin/extended_lib.html:36
-#: ../templates/admin/extended_lib.html:39
+#: ../templates/lib.html:286 ../templates/lib.html:296
+#: ../templates/lib.html:299
 msgid "Value"
 msgstr "值"
 
-#: ../templates/admin/extended_lib.html:36
-#: ../templates/admin/extended_lib.html:39
+#: ../templates/lib.html:296 ../templates/lib.html:299
 msgid "Attribute"
 msgstr "属性"
 
-#: ../templates/admin/extended_lib.html:36 ../templates/admin/inspector.html:16
+#: ../templates/lib.html:296 ../templates/admin/inspector.html:16
 #: ../templates/admin/inspector.html:19
 msgid "name"
 msgstr "名称"
 
-#: ../templates/admin/extended_lib.html:36
+#: ../templates/lib.html:296
 msgid "module"
 msgstr "模块"
 
-#: ../templates/admin/extended_lib.html:36
+#: ../templates/lib.html:296
 msgid "static"
 msgstr "静态文件"
 
-#: ../templates/admin/extended_lib.html:36
+#: ../templates/lib.html:296
 msgid "templates"
 msgstr "模板文件"
 
-#: ../templates/admin/extended_lib.html:39
+#: ../templates/lib.html:299
 msgid "arguments"
 msgstr "参数"
 
-#: ../templates/admin/extended_lib.html:39
+#: ../templates/lib.html:299
 msgid "defaults"
 msgstr "默认值"
 
-#: ../templates/admin/extended_lib.html:39
+#: ../templates/lib.html:299
 msgid "methods"
 msgstr "方法"
 
-#: ../templates/admin/extended_lib.html:39
+#: ../templates/lib.html:299
 msgid "endpoint"
 msgstr "端点"
 
@@ -117,4 +177,32 @@ msgstr "属性"
 #: ../templates/admin/inspector.html:19
 msgid "extension"
 msgstr "扩展"
+
+#: ../templates/security/extended_change_password.html:19
+msgid "Please input old password"
+msgstr "请输入旧的密码"
+
+#: ../templates/security/extended_change_password.html:21
+msgid "Please input new password"
+msgstr "请输入新的密码"
+
+#: ../templates/security/extended_change_password.html:23
+msgid "Please repeat new password"
+msgstr "请确认新的密码"
+
+#: ../templates/security/extended_login_user.html:11
+msgid "System Name"
+msgstr "信息系统名称"
+
+#: ../templates/security/extended_login_user.html:19
+msgid "Sign In"
+msgstr "用户登录"
+
+#: ../templates/security/extended_login_user.html:30
+msgid "Please input login name"
+msgstr "请输入登录名"
+
+#: ../templates/security/extended_login_user.html:32
+msgid "Please input password"
+msgstr "请输入密码"
 

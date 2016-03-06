@@ -6,7 +6,9 @@ from __future__ import (absolute_import, division,
 
 from seed.core.admin import configure_admin
 from seed.core.db import db
-from seed.ext import (loggers, babel, templates, security, blueprints, context_processors)
+from seed.ext import (loggers, babel, templates, security,
+                      context_processors, assets,
+                      blueprints, views)
 
 
 def configure_extensions(app, admin):
@@ -16,7 +18,9 @@ def configure_extensions(app, admin):
     configure_admin(app, admin)
     templates.configure(app)
     security.configure(app, db)
-    blueprints.load_from_folder(app)
     context_processors.configure(app)
+    assets.configure(app)
+    blueprints.load_from_folder(app)
+    views.configure(app)
 
     return app

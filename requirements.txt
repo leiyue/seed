@@ -20,6 +20,12 @@ Flask-Security
 # Markdown
 Flask-Mistune
 
+# Assets
+Flask-Assets
+cssutils
+cssmin
+jsmin
+
 
 # Add-ons
 PyYAML

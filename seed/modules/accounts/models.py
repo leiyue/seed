@@ -12,7 +12,7 @@ from flask.ext.security.utils import encrypt_password
 from werkzeug.local import LocalProxy
 
 from seed.core.db import db
-from seed.core.models.mixins import CRUD, Dated
+from seed.core.models.base import CRUD, Dated
 
 _security = LocalProxy(lambda: flask.current_app.extensions.get('security'))
 
@@ -22,8 +22,8 @@ roles_users = db.Table('roles_users',
 
 
 class Role(db.Model, CRUD, Dated, RoleMixin):
-    name = db.Column(db.String(80), unique=True)
-    description = db.Column(db.String(255))
+    name = db.Column(db.String(128), unique=True)
+    description = db.Column(db.String(256))
 
     def __repr__(self):
         return '<{class_name}({name})>'.format(
@@ -37,14 +37,14 @@ class Role(db.Model, CRUD, Dated, RoleMixin):
 
 
 class User(db.Model, CRUD, UserMixin):
-    email = db.Column(db.String(255), unique=True)
-    password = db.Column('password', db.String(255), nullable=False)
+    email = db.Column(db.String(256), unique=True)
+    password = db.Column('password', db.String(256), nullable=False)
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     current_login_at = db.Column(db.DateTime())
-    current_login_ip = db.Column(db.String(255))
+    current_login_ip = db.Column(db.String(256))
     last_login_at = db.Column(db.DateTime())
-    last_login_ip = db.Column(db.String(255))
+    last_login_ip = db.Column(db.String(256))
     login_count = db.Column(db.Integer(), default=0)
     roles = db.relationship(
         'Role',
