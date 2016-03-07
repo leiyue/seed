@@ -1,11 +1,11 @@
-css-custom:
-        filters: cssmin
-        output: css/custom.css
-        contents:
-                - css/style.css
+admin-css-custom:
+  filters: cssmin
+  output: css/custom.css
+  contents:
+    - css/style.css
 
-js-custom:
-        filters: rjsmin
-        output: css/custom.js
-        contents:
-                - js/text_editor.js
+admin-js-custom:
+  filters: rjsmin
+  output: css/custom.js
+  contents:
+    - js/text_editor.js

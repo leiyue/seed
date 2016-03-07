@@ -3,10 +3,10 @@
 
 {% block head_css -%}
     {{ super() }}
-    {% assets "css-vendor" %}
+    {% assets "admin-css-vendor" %}
         <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css"/>
     {% endassets %}
-    {% assets "css-custom" %}
+    {% assets "admin-css-custom" %}
         <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css"/>
     {% endassets %}
 {%- endblock head_css %}
@@ -32,10 +32,10 @@
 {%- endblock access_control %}
 {% block tail_js -%}
     {{ super() }}
-    {% assets "js-vendor" %}
+    {% assets "admin-js-vendor" %}
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
-    {% assets "js-custom" %}
+    {% assets "admin-js-custom" %}
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
 {%- endblock %}
