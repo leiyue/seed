@@ -6,9 +6,18 @@ from __future__ import (absolute_import, division,
 
 from flask.ext.admin import helpers as admin_helpers
 
+from seed.core.models.config import Config
+
 
 def configure(app):
     from seed import admin
+
+    @app.context_processor
+    def inject():
+        return dict(
+            base_template='base.html',
+            config=Config
+        )
 
     security = app.extensions.get('security')
 

@@ -8,8 +8,10 @@ from flask import current_app
 from flask.ext.admin import AdminIndexView, expose, BaseView
 from flask.ext.admin.contrib.fileadmin import FileAdmin as _FileAdmin
 from flask.ext.admin.contrib.sqla import ModelView
+from flask.ext.admin.model import InlineFormAdmin
 
 from seed.core.admin import _l
+from seed.core.models.config import Value
 
 
 class IndexView(AdminIndexView):
@@ -42,3 +44,14 @@ class FileAdmin(_FileAdmin):
         self.roles_accepted = kwargs.pop('roles_accepted', list())
         self.editable_extensions = kwargs.pop('editable_extensions', tuple())
         super(FileAdmin, self).__init__(*args, **kwargs)
+
+
+class ValueInline(InlineFormAdmin):
+    form_choices = dict(
+        formatter=[('json', 'json'), ('text', 'text'), ('int', 'int'), ('float', 'float')],
+    )
+
+
+class ConfigAdmin(ModelView):
+    column_auto_select_related = True
+    inline_models = (ValueInline(Value),)

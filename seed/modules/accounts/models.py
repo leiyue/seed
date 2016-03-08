@@ -12,16 +12,18 @@ from flask.ext.security.utils import encrypt_password
 from werkzeug.local import LocalProxy
 
 from seed.core.db import db
-from seed.core.models.base import CRUD, Dated
+from seed.core.models.base import CRUD, Timestamped
 
 _security = LocalProxy(lambda: flask.current_app.extensions.get('security'))
 
-roles_users = db.Table('roles_users',
-                       db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
-                       db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
+roles_users = db.Table(
+    'roles_users',
+    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+    db.Column('role_id', db.Integer(), db.ForeignKey('role.id'))
+)
 
 
-class Role(db.Model, CRUD, Dated, RoleMixin):
+class Role(db.Model, CRUD, Timestamped, RoleMixin):
     name = db.Column(db.String(128), unique=True)
     description = db.Column(db.String(256))
 
@@ -36,7 +38,7 @@ class Role(db.Model, CRUD, Dated, RoleMixin):
         return self.name
 
 
-class User(db.Model, CRUD, UserMixin):
+class User(db.Model, CRUD, Timestamped, UserMixin):
     email = db.Column(db.String(256), unique=True)
     password = db.Column('password', db.String(256), nullable=False)
     active = db.Column(db.Boolean())

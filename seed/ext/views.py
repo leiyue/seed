@@ -14,6 +14,19 @@ def media(filename):
     )
 
 
+def glyphicons_or_awesome(filename):
+    if filename.startswith('glyphicons'):
+        return send_from_directory(
+            current_app.config.get('STATIC_ROOT'),
+            filename='libs/bootstrap/fonts/' + filename
+        )
+    else:
+        return send_from_directory(
+            current_app.config.get('STATIC_ROOT'),
+            filename='libs/font-awesome/fonts/' + filename
+        )
+
+
 def font_awesome(filename):
     return send_from_directory(
         current_app.config.get('STATIC_ROOT'),
@@ -30,5 +43,6 @@ def summernote_font(filename):
 
 def configure(app):
     app.add_url_rule('/mediafiles/<path:filename>', view_func=media)
-    app.add_url_rule('/static/fonts/<path:filename>', view_func=font_awesome)
-    app.add_url_rule('/static/css/font/<path:filename>', view_func=summernote_font)
+    app.add_url_rule('/static/fonts/<path:filename>', view_func=glyphicons_or_awesome)
+    app.add_url_rule('/static/css/fonts/<path:filename>', view_func=font_awesome)
+    app.add_url_rule('/static/css/admin/font/<path:filename>', view_func=summernote_font)

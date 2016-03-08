@@ -4,6 +4,8 @@
 from __future__ import (absolute_import, division,
                         print_function, unicode_literals)
 
+from flask import render_template
+
 from seed.core.admin import create_admin
 from seed.core.app import SeedApp
 from seed.ext import configure_extensions
@@ -23,7 +25,7 @@ def create_app(config=None, admin_instance=None, **settings):
     configure_extensions(app, admin_instance or admin)
 
     @app.route('/')
-    def hello_world():
-        return 'Hello World!'
+    def index():
+        return render_template('index.html')
 
     return app

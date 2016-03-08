@@ -16,5 +16,59 @@
         "user"
       ]
     }
+  ],
+  "configs": [
+    {
+      "group": "site",
+      "description": "Preferences for website",
+      "values": [
+        {
+          "name": "site_name",
+          "raw_value": "Clean Blog",
+          "formatter": "text"
+        },
+        {
+          "name": "site_description",
+          "raw_value": "Made by Flask and bootstrap for python full-stack",
+          "formatter": "text"
+        },
+        {
+          "name": "site_keywords",
+          "raw_value": "python, flask, bootstrap",
+          "formatter": "text"
+        },
+        {
+          "name": "site_author",
+          "raw_value": "leiyue",
+          "formatter": "text"
+        },
+        {
+          "name": "site_logo",
+          "raw_value": "/static/img/logo.png",
+          "formatter": "text"
+        },
+        {
+          "name": "site_background",
+          "raw_value": "/static/img/home-bg.jpg",
+          "formatter": "text"
+        },
+        {
+          "name": "site_copyright",
+          "raw_value": "LeiYue 2016",
+          "formatter": "text"
+        }
+      ]
+    },
+    {
+      "group": "links",
+      "description": "Links for website",
+      "values": [
+        {
+          "name": "link_github",
+          "raw_value": "https://github.com/leiyue",
+          "formatter": "text"
+        }
+      ]
+    }
   ]
 }

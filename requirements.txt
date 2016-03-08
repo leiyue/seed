@@ -14,6 +14,9 @@ Flask-Admin
 # Babel
 Flask-BabelEx
 
+# Moment
+Flask-Moment
+
 # Security
 Flask-Security
 

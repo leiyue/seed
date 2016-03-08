@@ -76,6 +76,9 @@ class CRUD(object):
 class Dated(object):
     available_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, nullable=False)
     available_until = db.Column(db.DateTime)
+
+
+class Timestamped(object):
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
 

@@ -27,7 +27,6 @@ css-vendor:
     - libs/bootstrap/dist/css/bootstrap.css
     - libs/clean-blog/css/clean-blog.css
 
-
 js-vendor:
   filters: rjsmin
   output: js/vendor.js

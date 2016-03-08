@@ -8,9 +8,10 @@ from flask.ext.admin import Admin
 from flask.ext.admin.contrib.sqla import ModelView
 
 from seed.core.admin.utils import _l
-from seed.core.admin.views import IndexView, InspectorView, AlembicView, FileAdmin
+from seed.core.admin.views import IndexView, InspectorView, AlembicView, FileAdmin, ConfigAdmin
 from seed.core.db import db
 from seed.core.models.alembic import Alembic
+from seed.core.models.config import Config
 
 
 class SeedAdmin(Admin):
@@ -55,6 +56,7 @@ def configure_admin(app, admin):
             app.logger.info(e)
 
     admin.add_view(InspectorView(category=_l("Settings"), name=_l("Inspector")))
+    admin.add_view(ConfigAdmin(Config, db.session, category=_l("Settings"), name=_l("Config")))
     if admin.app is None:
         admin.init_app(app)
     return admin

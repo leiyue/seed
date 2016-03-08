@@ -18,13 +18,13 @@
                aria-expanded="false">{{ icon('user') }} {{ current_user.email }} <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 {% if not current_user.is_authenticated -%}
-                    <li><a href="{{ url_for_security('login') }}">{{ icon('log-in') }} 登录</a></li>
+                    <li><a href="{{ url_for_security('login') }}">{{ icon('log-in') }}{{ _('Login') }}</a></li>
                 {% else %}
                     {% if security.changeable -%}
-                        <li><a href="{{ url_for_security('change_password') }}">{{ icon('lock') }} 更改密码</a></li>
+                        <li><a href="{{ url_for_security('change_password') }}">{{ icon('lock') }}{{ _('Change Password') }}</a></li>
                         <li role="separator" class="divider"></li>
                     {%- endif %}
-                    <li><a href="{{ url_for_security('logout') }}">{{ icon('log-out') }} 注销</a></li>
+                    <li><a href="{{ url_for_security('logout') }}">{{ icon('log-out') }}{{ _('Logout') }}</a></li>
                 {%- endif %}
             </ul>
         </li>
@@ -38,13 +38,14 @@
     {% assets "admin-js-custom" %}
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
+    {{ moment.include_moment() }}
+    {{ moment.lang('zh-cn') }}
 {%- endblock %}
 
 {% block tail -%}
     <div id="footer">
         {% block footer %}
-            <p class="text-center">&copy; {{ config['AUTHOR_NAME'] or config['COMPANY_NAME'] or config['PROJECT_NAME'] }}
-                2016</p>
+            <p class="text-center">{{ _('Copyright') }} &copy; LeiYue 2016</p>
         {% endblock %}
     </div>
 {%- endblock tail %}
