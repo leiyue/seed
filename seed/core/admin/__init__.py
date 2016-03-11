@@ -38,6 +38,8 @@ def create_admin(app=None, index_view=None):
 
 def configure_admin(app, admin):
     admin.add_view(AlembicView(Alembic, db.session, category=_l('System'), name=_l('Alembic')))
+    admin.add_view(InspectorView(category=_l("Settings"), name=_l("Inspector")))
+    admin.add_view(ConfigAdmin(Config, db.session, category=_l("Settings"), name=_l("Config")))
 
     for entry in app.config.get('FILE_ADMIN', []):
         try:
@@ -55,8 +57,6 @@ def configure_admin(app, admin):
         except Exception as e:
             app.logger.info(e)
 
-    admin.add_view(InspectorView(category=_l("Settings"), name=_l("Inspector")))
-    admin.add_view(ConfigAdmin(Config, db.session, category=_l("Settings"), name=_l("Config")))
     if admin.app is None:
         admin.init_app(app)
     return admin

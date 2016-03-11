@@ -47,6 +47,10 @@ class FileAdmin(_FileAdmin):
 
 
 class ValueInline(InlineFormAdmin):
+    form_widget_args = dict(
+        created_at=dict(disabled=True),
+        updated_at=dict(disabled=True)
+    )
     form_choices = dict(
         formatter=[('json', 'json'), ('text', 'text'), ('int', 'int'), ('float', 'float')],
     )
@@ -54,4 +58,11 @@ class ValueInline(InlineFormAdmin):
 
 class ConfigAdmin(ModelView):
     column_auto_select_related = True
+    column_exclude_list = ('created_at', 'updated_at',)
+    column_filters = ('group', 'description',)
+    column_searchable_list = ('group', 'description',)
+    form_widget_args = dict(
+        created_at=dict(disabled=True),
+        updated_at=dict(disabled=True)
+    )
     inline_models = (ValueInline(Value),)
