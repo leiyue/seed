@@ -1,4 +1,3 @@
-{% from 'lib.html' import icon %}
 {% extends 'admin/base.html' %}
 
 {% block head_css -%}
@@ -11,25 +10,9 @@
     {% endassets %}
 {%- endblock head_css %}
 
-{% block access_control -%}
-    <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="false">{{ icon('user') }} {{ current_user.email }} <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                {% if not current_user.is_authenticated -%}
-                    <li><a href="{{ url_for_security('login') }}">{{ icon('log-in') }}{{ _('Login') }}</a></li>
-                {% else %}
-                    {% if security.changeable -%}
-                        <li><a href="{{ url_for_security('change_password') }}">{{ icon('lock') }}{{ _('Change Password') }}</a></li>
-                        <li role="separator" class="divider"></li>
-                    {%- endif %}
-                    <li><a href="{{ url_for_security('logout') }}">{{ icon('log-out') }}{{ _('Logout') }}</a></li>
-                {%- endif %}
-            </ul>
-        </li>
-    </ul>
-{%- endblock access_control %}
+{% block access_control %}
+    {% include 'admin/_access_control.html' %}
+{% endblock access_control %}
 {% block tail_js -%}
     {{ super() }}
     {% assets "admin-js-vendor" %}

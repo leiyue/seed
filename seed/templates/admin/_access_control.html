@@ -1,0 +1,19 @@
+{% from 'lib.html' import icon %}
+<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+           aria-expanded="false">{{ icon('user') }} {{ current_user.email }} <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            {% if not current_user.is_authenticated -%}
+                <li><a href="{{ url_for_security('login') }}">{{ icon('log-in') }} {{ _('Login') }}</a></li>
+            {% else %}
+                {% if security.changeable -%}
+                    <li><a href="{{ url_for_security('change_password') }}">
+                        {{ icon('lock') }} {{ _('Change Password') }}</a></li>
+                    <li role="separator" class="divider"></li>
+                {%- endif %}
+                <li><a href="{{ url_for_security('logout') }}">{{ icon('log-out') }} {{ _('Logout') }}</a></li>
+            {%- endif %}
+        </ul>
+    </li>
+</ul>

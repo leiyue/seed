@@ -13,6 +13,8 @@ from seed.core.db import db
 from seed.core.models.alembic import Alembic
 from seed.core.models.config import Config
 
+__all__ = ['SeedAdmin', 'create_admin', 'configure_admin']
+
 
 class SeedAdmin(Admin):
     registered = []

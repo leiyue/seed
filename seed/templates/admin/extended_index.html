@@ -2,29 +2,4 @@
 
 {% block body %}
     <p class="text-center ">hello world</p>
-    <div id="summernote"></div>
-    <textarea id="bootstrap-markdown" rows="10"></textarea>
-{% endblock %}
-
-{% block tail_js %}
-    {{ super() }}
-    <script>
-        $('#summernote').summernote({
-            height: 400,
-            minHeight: null,
-            maxHeight: null,
-            lang: 'zh-CN',
-            focus: true
-        });
-        $('#bootstrap-markdown').markdown({
-            height: 400,
-            savable: false,
-            hideable: false,
-            iconlibrary: 'fa',
-            resize: 'both',
-            footer: 'Markdown 语法请参见 http://wowubuntu.com/markdown/',
-            language: 'zh',
-            fullscreen: {enable: true, icons: 'pen'}
-        });
-    </script>
 {% endblock %}

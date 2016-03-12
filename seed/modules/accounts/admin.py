@@ -9,32 +9,27 @@ from flask.ext.admin.contrib.sqla import ModelView
 from flask.ext.security.utils import encrypt_password
 
 from seed import admin
-from seed.core.admin import _l
+from seed.core.admin.utils import _l
 from seed.modules.accounts.models import Role, User
 
 
 class RoleAdmin(ModelView):
     page_size = 30
     can_create = True
-    can_delete = False
+    can_delete = True
     can_edit = True
 
-    column_display_pk = False
     column_filters = ['name']
     column_exclude_list = ('created_at', 'updated_at',)
     column_default_sort = ('id', False)
     column_searchable_list = ('name', 'description',)
     column_labels = dict(
-        id='ID',
-        name='角色名称',
-        description='角色描述',
-        created_at='创建时间',
-        updated_at='更新时间',
-        users='包含以下用户')
-    column_descriptions = dict(
-        name='推荐使用英文名称，兼容性更强',
-        description='简要的描述角色的作用',
-        users='默认角色User中包含所有用户，请等候……'
+        id=_l('Id'),
+        created_at=_l('Created At'),
+        updated_at=_l('Updated At'),
+        name=_l('Name'),
+        description=_l('Description'),
+        users=_l('Users')
     )
     form_columns = ('name', 'description', 'created_at', 'updated_at', 'users')
     form_widget_args = dict(
@@ -46,31 +41,34 @@ class RoleAdmin(ModelView):
 class UserAdmin(ModelView):
     page_size = 30
     can_create = True
-    can_delete = False
+    can_delete = True
     can_edit = True
-    column_display_pk = False
+
     column_filters = ('email',)
     column_exclude_list = ('created_at', 'updated_at', 'password', 'last_login_at', 'last_login_ip',)
     column_default_sort = ('id', False)
     column_searchable_list = ('email',)
     column_labels = dict(
-        id='ID',
-        email='用户名',
-        password='密码',
-        active='启用',
-        confirmed_at='确认时间',
-        current_login_at='本次登录时间',
-        current_login_ip='本次登录IP',
-        last_login_at=u'上次登录时间',
-        last_login_ip='上次登录IP',
-        login_count='登录次数',
-        roles='权限'
+        id=_l('Id'),
+        email=_l('Email'),
+        password=_l('Password'),
+        active=_l('Active'),
+        created_at=_l('Created At'),
+        updated_at=_l('Updated At'),
+        confirmed_at=_l('Confirmed At'),
+        current_login_at=_l('Current Login At'),
+        current_login_ip=_l('Current Login Ip'),
+        last_login_at=_l('Last Login At'),
+        last_login_ip=_l('Last Login Ip'),
+        login_count=_l('Login Count'),
+        roles=_l('Roles'),
+        posts=_l('Posts'),
     )
     column_descriptions = dict(
-        email='用户登录标识',
-        password='数据库将保存加密后的密码',
-        active='是否启用帐户，默认为启用状态',
-        roles='管理用户为admin，普通用户为user，默认为user。'
+        email=_l('User login identify'),
+        password=_l('Store the encrypted user password in database'),
+        active=_l('Is the user enable'),
+        roles=_l('admin for administrators group, user for users group, defaults to user')
     )
     form_widget_args = dict(
         created_at=dict(disabled=True),
@@ -83,20 +81,12 @@ class UserAdmin(ModelView):
         login_count=dict(disabled=True),
     )
 
-    # form_choices = dict(
-    #     roles=[dict(admin='管理员'), dict(user='普通用户')],
-    # )
-    # form_ajax_refs = {'roles': {'fields': (Role.name, Role.description)}}
-
-    # create_template = 'admin/model/create_user.html'
-
-
     def create_model(self, form):
         self.model.register(
             email=form.data['email'],
             password=form.data['password'],
             confirmed=True,
-            roles=['User']
+            roles=['user']
         )
         return flask.redirect(flask.url_for('user.index_view'))
 

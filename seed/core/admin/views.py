@@ -10,7 +10,7 @@ from flask.ext.admin.contrib.fileadmin import FileAdmin as _FileAdmin
 from flask.ext.admin.contrib.sqla import ModelView
 from flask.ext.admin.model import InlineFormAdmin
 
-from seed.core.admin import _l
+from seed.core.admin.utils import _l
 from seed.core.models.config import Value
 
 
@@ -47,6 +47,19 @@ class FileAdmin(_FileAdmin):
 
 
 class ValueInline(InlineFormAdmin):
+    column_labels = dict(
+        id=_l('Id'),
+        created_at=_l('Created At'),
+        updated_at=_l('Updated At'),
+        name=_l('Name'),
+        raw_value=_l('Raw Value'),
+        formatter=_l('Formatter')
+    )
+    column_descriptions = dict(
+        name=_l('Value name'),
+        raw_value=_l('Please be careful, this value may affect the system.'),
+        formatter=_l('Value formatter')
+    )
     form_widget_args = dict(
         created_at=dict(disabled=True),
         updated_at=dict(disabled=True)
@@ -61,6 +74,18 @@ class ConfigAdmin(ModelView):
     column_exclude_list = ('created_at', 'updated_at',)
     column_filters = ('group', 'description',)
     column_searchable_list = ('group', 'description',)
+    column_labels = dict(
+        id=_l('Id'),
+        created_at=_l('Created At'),
+        updated_at=_l('Updated At'),
+        group=_l('Group'),
+        description=_l('Description'),
+        values=_l('Values')
+    )
+    column_descriptions = dict(
+        group=_l('Configuration group'),
+        description=_l('Configuration description'),
+    )
     form_widget_args = dict(
         created_at=dict(disabled=True),
         updated_at=dict(disabled=True)

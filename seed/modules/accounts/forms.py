@@ -13,7 +13,7 @@ from flask.ext.security.utils import get_message, verify_and_update_password
 from werkzeug.local import LocalProxy
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 
-from seed.core.admin import _l
+from seed.core.admin.utils import _l
 
 _datastore = LocalProxy(lambda: flask.current_app.extensions['security'].datastore)
 _remember_default = LocalProxy(lambda: flask.current_app.config.get('SECURITY_DEFAULT_REMEMBER_ME', True))
