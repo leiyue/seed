@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: seed VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-03-07 00:15+0800\n"
+"POT-Creation-Date: 2016-03-13 10:45+0800\n"
 "PO-Revision-Date: 2016-03-01 02:00+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hans_CN\n"
@@ -30,46 +30,169 @@ msgstr "文件"
 msgid "Media files"
 msgstr "媒体文件"
 
-#: ../core/admin/__init__.py:39
+#: ../core/admin/__init__.py:42 ../modules/accounts/admin.py:102
+#: ../modules/accounts/admin.py:103
 msgid "System"
 msgstr "系统"
 
-#: ../core/admin/__init__.py:39
+#: ../core/admin/__init__.py:42
 msgid "Alembic"
-msgstr "数据库版本"
+msgstr "数据库"
 
-#: ../core/admin/__init__.py:57
+#: ../core/admin/__init__.py:43 ../core/admin/__init__.py:44
 msgid "Settings"
 msgstr "设置"
 
-#: ../core/admin/__init__.py:57
+#: ../core/admin/__init__.py:43
 msgid "Inspector"
 msgstr "检查员"
 
-#: ../core/admin/views.py:36
+#: ../core/admin/__init__.py:44
+msgid "Config"
+msgstr "配置"
+
+#: ../core/admin/views.py:38
 msgid "version_num"
 msgstr "数据库版本"
 
-#: ../modules/accounts/admin.py:97 ../modules/accounts/admin.py:98
-msgid "Accounts"
-msgstr "账号"
+#: ../core/admin/views.py:51 ../core/admin/views.py:78
+#: ../modules/accounts/admin.py:27 ../modules/accounts/admin.py:52
+#: ../modules/posts/admin.py:21 ../modules/posts/admin.py:38
+#: ../modules/posts/admin.py:52
+msgid "Id"
+msgstr "序号"
 
-#: ../modules/accounts/admin.py:97
-msgid "Roles"
-msgstr "角色"
+#: ../core/admin/views.py:52 ../core/admin/views.py:79
+#: ../modules/accounts/admin.py:28 ../modules/accounts/admin.py:56
+#: ../modules/posts/admin.py:22 ../modules/posts/admin.py:39
+#: ../modules/posts/admin.py:53
+msgid "Created At"
+msgstr "创建时间"
 
-#: ../modules/accounts/admin.py:98
-msgid "User"
+#: ../core/admin/views.py:53 ../core/admin/views.py:80
+#: ../modules/accounts/admin.py:29 ../modules/accounts/admin.py:57
+#: ../modules/posts/admin.py:23 ../modules/posts/admin.py:40
+#: ../modules/posts/admin.py:54
+msgid "Updated At"
+msgstr "更新时间"
+
+#: ../core/admin/views.py:54 ../modules/accounts/admin.py:30
+#: ../modules/posts/admin.py:24 ../modules/posts/admin.py:41
+#: ../modules/posts/admin.py:55
+msgid "Name"
+msgstr "名称"
+
+#: ../core/admin/views.py:55
+msgid "Raw Value"
+msgstr "原始数值"
+
+#: ../core/admin/views.py:56
+msgid "Formatter"
+msgstr "数值格式"
+
+#: ../core/admin/views.py:59
+msgid "Value name"
+msgstr "数值名称"
+
+#: ../core/admin/views.py:60
+msgid "Please be careful, this value may affect the system."
+msgstr "请注意，修改数值可能影响系统"
+
+#: ../core/admin/views.py:61
+msgid "Value formatter"
+msgstr "数值格式器"
+
+#: ../core/admin/views.py:81
+msgid "Group"
+msgstr "组"
+
+#: ../core/admin/views.py:82 ../modules/accounts/admin.py:31
+#: ../modules/posts/admin.py:25
+msgid "Description"
+msgstr "描述"
+
+#: ../core/admin/views.py:83
+msgid "Values"
+msgstr "值"
+
+#: ../core/admin/views.py:86
+msgid "Configuration group"
+msgstr "配置组"
+
+#: ../core/admin/views.py:87
+msgid "Configuration description"
+msgstr "配置描述"
+
+#: ../modules/accounts/admin.py:32
+msgid "Users"
 msgstr "用户"
 
-#: ../modules/accounts/forms.py:25 ../modules/accounts/forms.py:29
-#: ../modules/accounts/forms.py:33
+#: ../modules/accounts/admin.py:53 ../modules/accounts/forms.py:25
+#: ../modules/accounts/forms.py:29 ../modules/accounts/forms.py:33
 msgid "Email"
 msgstr "邮件地址"
 
-#: ../modules/accounts/forms.py:37 ../modules/accounts/forms.py:47
+#: ../modules/accounts/admin.py:54 ../modules/accounts/forms.py:37
+#: ../modules/accounts/forms.py:47
 msgid "Password"
 msgstr "密码"
+
+#: ../modules/accounts/admin.py:55
+msgid "Active"
+msgstr "启用"
+
+#: ../modules/accounts/admin.py:58
+msgid "Confirmed At"
+msgstr "确认时间"
+
+#: ../modules/accounts/admin.py:59
+msgid "Current Login At"
+msgstr "上次登录时间"
+
+#: ../modules/accounts/admin.py:60
+msgid "Current Login Ip"
+msgstr "上次登录IP"
+
+#: ../modules/accounts/admin.py:61
+msgid "Last Login At"
+msgstr "请输入登录名"
+
+#: ../modules/accounts/admin.py:62
+msgid "Last Login Ip"
+msgstr "请输入登录名"
+
+#: ../modules/accounts/admin.py:63
+msgid "Login Count"
+msgstr "登录次数"
+
+#: ../modules/accounts/admin.py:64 ../modules/accounts/admin.py:102
+msgid "Roles"
+msgstr "角色"
+
+#: ../modules/accounts/admin.py:65 ../modules/posts/admin.py:26
+#: ../modules/posts/admin.py:42
+msgid "Posts"
+msgstr "博客"
+
+#: ../modules/accounts/admin.py:68
+msgid "User login identify"
+msgstr "用户登录标识"
+
+#: ../modules/accounts/admin.py:69
+msgid "Store the encrypted user password in database"
+msgstr "数据库存储加密后的用户密码"
+
+#: ../modules/accounts/admin.py:70
+msgid "Is the user enable"
+msgstr "是否启用用户"
+
+#: ../modules/accounts/admin.py:71
+msgid "admin for administrators group, user for users group, defaults to user"
+msgstr "管理员用户为admin，普通用户为user"
+
+#: ../modules/accounts/admin.py:103
+msgid "User"
+msgstr "用户"
 
 #: ../modules/accounts/forms.py:41
 msgid "Password Confirm"
@@ -83,7 +206,7 @@ msgstr "登录名"
 msgid "Remember"
 msgstr "自动登录"
 
-#: ../modules/accounts/forms.py:49
+#: ../modules/accounts/forms.py:49 ../templates/admin/_access_control.html:8
 msgid "Login"
 msgstr "登录"
 
@@ -95,22 +218,31 @@ msgstr "新密码"
 msgid "New Password Confirm"
 msgstr "确认新密码"
 
-#: ../modules/accounts/forms.py:89
+#: ../modules/accounts/forms.py:89 ../templates/admin/_access_control.html:12
 #: ../templates/security/extended_change_password.html:8
 msgid "Change Password"
 msgstr "更改密码"
 
-#: ../modules/posts/admin.py:24 ../modules/posts/admin.py:25
+#: ../modules/posts/admin.py:78 ../modules/posts/admin.py:79
+#: ../modules/posts/admin.py:80
 msgid "Content"
 msgstr "内容"
 
-#: ../modules/posts/admin.py:24
+#: ../modules/posts/admin.py:78
 msgid "Category"
 msgstr "分类"
 
-#: ../modules/posts/admin.py:25
+#: ../modules/posts/admin.py:79
 msgid "Post"
 msgstr "博客"
+
+#: ../modules/posts/admin.py:80
+msgid "Tag"
+msgstr "标签"
+
+#: ../templates/_footer.html:19 ../templates/admin/extended_base.html:31
+msgid "Copyright"
+msgstr "版权所有"
 
 #: ../templates/lib.html:286
 msgid "Key"
@@ -157,6 +289,10 @@ msgstr "方法"
 #: ../templates/lib.html:299
 msgid "endpoint"
 msgstr "端点"
+
+#: ../templates/admin/_access_control.html:15
+msgid "Logout"
+msgstr ""
 
 #: ../templates/admin/inspector.html:7
 msgid "Blueprints"
@@ -205,4 +341,5 @@ msgstr "请输入登录名"
 #: ../templates/security/extended_login_user.html:32
 msgid "Please input password"
 msgstr "请输入密码"
+
 
