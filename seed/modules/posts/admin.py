@@ -10,7 +10,7 @@ from flask.ext.admin.model import InlineFormAdmin
 
 from seed import admin
 from seed.core.admin.utils import _l
-from seed.core.admin.widgets import TextEditor
+from seed.core.admin.widgets import TextEditor, PrepopulatedText
 from seed.modules.posts.models import Category, Post, Tag
 
 
@@ -66,7 +66,8 @@ class PostAdmin(ModelView):
         content_format=[('html', 'html'), ('markdown', 'markdown'), ('text', 'text')],
     )
     form_args = dict(
-        content={'widget': TextEditor()}
+        content={'widget': TextEditor()},
+        slug={'widget': PrepopulatedText(master='title')}
     )
     form_widget_args = dict(
         created_at=dict(disabled=True),

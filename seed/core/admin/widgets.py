@@ -5,7 +5,7 @@ from __future__ import (absolute_import, division,
                         print_function, unicode_literals)
 
 from flask import render_template
-from wtforms.widgets import TextArea
+from wtforms.widgets import TextArea, TextInput
 
 
 class TextEditor(TextArea):
@@ -21,4 +21,21 @@ class TextEditor(TextArea):
             'admin/widgets/text_editor.html',
             selector='.' + self.css_cls
         )
+        return html
+
+
+class PrepopulatedText(TextInput):
+    def __init__(self, *args, **kwargs):
+        self.master = kwargs.pop('master', '')
+        super(PrepopulatedText, self).__init__(*args, **kwargs)
+
+    def __call__(self, *args, **kwargs):
+        html = super(PrepopulatedText, self).__call__(*args, **kwargs)
+        slave = args[0].id
+        if self.master:
+            html += render_template(
+                'admin/widgets/prepopulated.html',
+                master=self.master,
+                slave=slave
+            )
         return html

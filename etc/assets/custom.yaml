@@ -9,3 +9,4 @@ admin-js-custom:
   output: css/admin/custom.js
   contents:
     - js/text_editor.js
+    - js/slugify.js
