@@ -7,6 +7,8 @@ from __future__ import (absolute_import, division,
 import datetime
 import logging
 
+import six
+
 from seed.core.db import db
 
 logger = logging.getLogger()
@@ -35,7 +37,7 @@ class CRUD(object):
     @classmethod
     def get_by_id(cls, obj_id):
         if any(
-                (isinstance(obj_id, basestring) and obj_id.isdigit(),
+                (isinstance(obj_id, six.string_types) and obj_id.isdigit(),
                  isinstance(obj_id, (int, float))),
         ):
             return cls.query.get(int(obj_id))
@@ -45,7 +47,7 @@ class CRUD(object):
     def create(cls, _commit=True, **kwargs):
         instance = cls(**kwargs)
         obj = instance.save(_commit=_commit)
-        logger.debug('Created {0}'.format(unicode(obj)))
+        logger.debug('Created {0}'.format(six.text_type(obj)))
         return obj
 
     def update(self, _commit=True, **kwargs):

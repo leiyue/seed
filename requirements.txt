@@ -1,5 +1,6 @@
 # Script
 Flask-Script
+Six
 
 # SeedApp
 Flask

@@ -70,5 +70,34 @@
         }
       ]
     }
+  ],
+  "posts": [
+    {
+      "title": "Man must explore, and this is exploration at its greatest",
+      "summary": "Problems look mighty small from 150 miles up",
+      "content": "I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.",
+      "content_format": "html",
+      "published": true,
+      "category": "Uncategorized",
+      "author": "admin"
+    },
+    {
+      "title": "Science has not yet mastered prophecy",
+      "summary": "We predict too much for the next year and yet far too little for the next ten.",
+      "content": "I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.",
+      "content_format": "html",
+      "published": true,
+      "category": "Uncategorized",
+      "author": "admin"
+    },
+    {
+      "title": "Failure is not an option",
+      "summary": "Many say exploration is part of our destiny, but it’s actually our duty to future generations.",
+      "content": "I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.",
+      "content_format": "html",
+      "published": true,
+      "category": "Uncategorized",
+      "author": "admin"
+    }
   ]
 }

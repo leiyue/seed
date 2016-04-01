@@ -36,6 +36,7 @@ class Populate(object):
         self.load_fixtures()
         self.create_users()
         self.create_configs()
+        self.create_posts()
 
     def load_existing_roles(self):
         roles = Role.query.all()
